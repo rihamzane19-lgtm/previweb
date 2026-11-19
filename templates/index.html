@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PréviWeb</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Fichier CSS -->
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 
 <body>
 
+    <!-- En-tête -->
     <header>
         <h1>PréviWeb</h1>
         <p>Plateforme de prévision des séries chronologiques</p>
     </header>
 
+    <!-- Navigation -->
     <nav>
         <a href="#importer">Importer</a>
         <a href="#analyser">Analyser</a>
@@ -23,62 +28,103 @@
 
     <main>
 
+        <!-- SECTION 1 : IMPORTATION -->
         <section id="importer">
+
             <h2>Importer des données</h2>
+
             <p>Importez votre fichier CSV pour commencer l'analyse.</p>
 
             <form id="form-import">
+
                 <label for="fichier-csv">Choisir un fichier CSV :</label>
+
                 <input type="file" id="fichier-csv" name="fichier" accept=".csv,text/csv" required>
+
                 <button type="submit">Importer le fichier</button>
+
             </form>
 
+            <!-- Messages de succès et d'erreur -->
             <p id="message" class="message" role="status" aria-live="polite"></p>
 
             <h3>Format attendu du fichier CSV</h3>
-            <pre>date,valeur
-2020-01-01,125.5
-2020-02-01,130.2
-2020-03-01,128.7</pre>
 
-            <p>Règles : date au format AAAA-MM-JJ et valeurs numériques avec un point décimal.</p>
+            <pre>
+               date      valeur
+              2020-01-01,125.5
+              2020-02-01,130.2
+              2020-03-01,128.7</pre>
+
+            <p>
+                Règles : date au format AAAA-MM-JJ et valeurs numériques
+                avec un point décimal.
+            </p>
+
         </section>
 
+
+        <!-- SECTION 2 : ANALYSE -->
         <section id="analyser">
+
             <h2>Analyser la série chronologique</h2>
 
+            <!-- Graphique de la série et de la moyenne mobile -->
             <div class="graphique" id="zone-serie">
-                Le graphique de la série apparaîtra ici
+
+                <canvas id="graphique-serie"></canvas>
+
             </div>
 
+            <!-- Résumé des résultats -->
+            <p id="resume-serie"></p>
+
+            <!-- Tableau des observations -->
             <h3>Tableau des observations</h3>
 
             <table id="tableau-observations">
+
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>Valeur</th>
                     </tr>
                 </thead>
+
                 <tbody>
                 </tbody>
+
             </table>
+
         </section>
 
+
+        <!-- SECTION 3 : PREVISION -->
         <section id="prevoir">
+
             <h2>Prévoir les valeurs futures</h2>
 
             <div class="graphique" id="zone-prevision">
                 Le graphique des prévisions apparaîtra ici
             </div>
+
         </section>
 
     </main>
 
+
+    <!-- Pied de page -->
     <footer>
         <p>PréviWeb - Projet universitaire 2026/2027</p>
         <p>Master 2 Data Science & NLP - Université Blida 1</p>
     </footer>
+
+
+    <!-- Bibliothèque Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Fichier JavaScript du projet -->
+    <script src="/static/app.js"></script>
 
 </body>
 
